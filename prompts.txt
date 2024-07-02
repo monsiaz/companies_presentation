@@ -1,0 +1,20 @@
+Prompt 1: Présente moi en 350 mots cette entreprise, son histoire, son activité, son écosystème, ses enjeux.
+Prompt 2: Présente moi en 400 mots cette entreprise depuis sa création à aujourd'hui, en précisant son domaine d'activité et son positionnement, ainsi que ses résultats financiers.
+Prompt 3: Décris en 300 mots les principales étapes de développement de cette entreprise et les innovations majeures qu'elle a introduites sur le marché.
+Prompt 4: Fais un résumé de 350 mots sur les défis actuels de cette entreprise et les stratégies qu'elle met en place pour les surmonter.
+Prompt 5: Rédige un texte de 400 mots sur la culture d'entreprise et les valeurs fondamentales qui définissent cette société.
+Prompt 6: Présente moi en 300 mots les principaux projets et initiatives que cette entreprise prévoit pour l'année à venir.
+Prompt 7: Décris en 350 mots les tendances du marché dans lequel évolue cette entreprise et comment elle s'y adapte.
+Prompt 8: Fais une analyse de 400 mots sur les principaux concurrents de cette entreprise et comment elle se distingue dans son secteur.
+Prompt 9: Rédige un article de 350 mots sur l'histoire de cette entreprise et ses étapes clés de développement.
+Prompt 10: Analyse en 400 mots les rapports financiers récents de cette entreprise et discute des implications pour les investisseurs.
+Prompt 11: Présente en 350 mots l'évolution de cette entreprise sur les cinq dernières années et donne une perspective sur son avenir.
+Prompt 12: Rédige un texte de 400 mots sur les innovations récentes de cette entreprise et leur impact sur sa position sur le marché.
+Prompt 13: Décris en 350 mots l'écosystème de cette entreprise, incluant ses partenaires clés et ses collaborations stratégiques.
+Prompt 14: Fais un résumé de 400 mots sur les performances financières de cette entreprise et les facteurs clés de succès.
+Prompt 15: Présente moi en 300 mots les principaux défis réglementaires et légaux auxquels cette entreprise fait face et comment elle les gère.
+Prompt 16: Décris en 350 mots les initiatives de responsabilité sociale et environnementale de cette entreprise.
+Prompt 17: Rédige un article de 400 mots sur les stratégies de croissance et d'expansion de cette entreprise.
+Prompt 18: Présente en 350 mots les produits ou services phares de cette entreprise et leur impact sur le marché.
+Prompt 19: Fais un résumé de 400 mots sur les relations de cette entreprise avec ses clients et sa stratégie de fidélisation.
+Prompt 20: Analyse en 350 mots les facteurs macroéconomiques influençant cette entreprise et comment elle adapte sa stratégie en conséquence.

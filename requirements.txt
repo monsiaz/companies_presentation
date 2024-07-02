@@ -1,0 +1,6 @@
+pandas
+openai
+tabulate
+beautifulsoup4
+selenium
+fake-useragent
