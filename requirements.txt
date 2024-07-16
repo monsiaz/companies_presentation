@@ -1,6 +1,9 @@
-pandas
 openai
+pandas
 tabulate
 beautifulsoup4
 selenium
 fake-useragent
+tqdm
+python-dotenv
+psutil
