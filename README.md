@@ -1,104 +1,120 @@
-# Presentation Text Generator
 
-Ce projet utilise Selenium, BeautifulSoup et l'API OpenAI GPT-4 pour extraire des informations sur des entreprises depuis des pages web, puis génère un texte de présentation détaillé pour chaque entreprise. Le script utilise également la bibliothèque `tqdm` pour afficher une barre de progression pendant l'exécution.
+# Company Information Scraper and GPT-4o Text Generator
 
-## Prérequis
+This script scrapes company information from a provided URL list, processes the data, and generates text using OpenAI's GPT-4o model. It leverages several libraries for web scraping, data manipulation, and concurrent processing to efficiently handle large datasets.
 
-Assurez-vous d'avoir les éléments suivants installés sur votre machine :
+## Prerequisites
 
-- Python 3.x
-- pip (Python package installer)
+Ensure you have the following installed:
+
+- Python 3.7+
+- ChromeDriver
+- Required Python packages (listed below)
 
 ## Installation
 
-1. Clonez ce dépôt sur votre machine locale :
+1. Clone the repository or download the script files.
 
-    ```bash
-    git clone https://github.com/votre-utilisateur/presentation-text-generator.git
-    cd presentation-text-generator
-    ```
+2. Install the required packages using pip:
 
-2. Créez un environnement virtuel et activez-le :
+   ```bash
+   pip install time random json pandas psutil openai tabulate beautifulsoup4 selenium fake-useragent tqdm python-dotenv
+   ```
 
-    ```bash
-    python -m venv .venv
-    source .venv/bin/activate  # Sur Windows, utilisez .venv\Scripts\activate
-    ```
+3. Ensure ChromeDriver is installed and available in your PATH. You can download it from [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads).
 
-3. Installez les dépendances requises :
+4. Create a `.env` file in the root directory and add your OpenAI API key and proxies file path:
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+   ```env
+   OPENAI_API_KEY=your_openai_api_key
+   PROXY_FILE_PATH=path_to_your_proxies_file.txt
+   ```
+
+## Usage
+
+1. Prepare your input files:
+   - A CSV file with company information (`liste-entreprises.csv`).
+   - A text file with GPT-4o prompts (`prompts.txt`).
+   - A text file with proxy addresses (`proxies.txt`).
+
+2. Adjust the paths in the script accordingly:
+   
+   ```python
+   company_csv_path = '/path/to/your/liste-entreprises.csv'
+   prompts_file_path = '/path/to/your/prompts.txt'
+   proxies_file_path = os.getenv('PROXY_FILE_PATH')
+   output_json_path = '/path/to/your/company_info.json'
+   ```
+
+3. Run the script:
+
+   ```bash
+   python your_script.py
+   ```
+
+4. The script will generate a JSON file (`company_info.json`) with the processed company information and the generated text.
 
 ## Configuration
 
-1. Remplissez le fichier `config.json` avec votre clé API OpenAI et le chemin absolu vers les fichiers nécessaires :
+### Environment Variables
 
-    ```json
-    {
-        "API_KEY": "votre_clé_api_openai",
-        "company_csv_path": "/chemin/vers/liste-entreprises.csv",
-        "prompts_file_path": "/chemin/vers/prompts.txt",
-        "proxies_file_path": "/chemin/vers/proxyscrape_premium_http_proxies.txt",
-        "output_json_path": "/chemin/vers/company_info.json"
-    }
-    ```
+- `OPENAI_API_KEY`: Your OpenAI API key.
+- `PROXY_FILE_PATH`: Path to your proxies file.
 
-2. Préparez vos fichiers d'entrée :
-   - `liste-entreprises.csv` : Fichier CSV contenant les informations des entreprises, incluant une colonne `URL`.
-   - `prompts.txt` : Fichier texte contenant les différents prompts séparés par deux sauts de ligne (`\n\n`).
-   - `proxyscrape_premium_http_proxies.txt` : Fichier texte contenant des proxies HTTP.
+### Script Parameters
 
-## Utilisation
+- `mode_test` (boolean): Set to `True` to process a sample of 15 companies for testing.
 
-1. Activez l'environnement virtuel si ce n'est pas déjà fait :
+## Functions
 
-    ```bash
-    source .venv/bin/activate  # Sur Windows, utilisez .venv\Scripts\activate
-    ```
+### `load_company_info(csv_path)`
 
-2. Exécutez le script :
+Loads company information from a CSV file and returns a list of dictionaries.
 
-    ```bash
-    python script.py
-    ```
+### `generate_text(prompt)`
 
-Le script traitera les entreprises listées dans le fichier CSV, extraira le texte de présentation des pages web, générera des textes de présentation détaillés en utilisant GPT-4, et affichera une barre de progression pour suivre l'avancement du traitement.
+Generates text using the GPT-4o model with the provided prompt.
 
-## Structure du projet
+### `load_prompts(prompts_file_path)`
 
-- `script.py` : Script principal pour le traitement des entreprises.
-- `requirements.txt` : Liste des dépendances Python nécessaires.
-- `config.json` : Fichier de configuration contenant les chemins et la clé API.
-- `liste-entreprises.csv` : Fichier CSV contenant les informations des entreprises.
-- `prompts.txt` : Fichier texte contenant les prompts pour GPT-4.
-- `proxyscrape_premium_http_proxies.txt` : Fichier texte contenant les proxies HTTP.
+Loads prompts from a text file.
 
-## Dépendances
+### `load_proxies(proxies_file_path)`
 
-Le projet utilise les bibliothèques suivantes :
+Loads proxy addresses from a text file.
 
-- `pandas`
-- `openai`
-- `tabulate`
-- `beautifulsoup4`
-- `selenium`
-- `fake_useragent`
-- `tqdm`
+### `extract_intro_text(page_source)`
 
-Ces dépendances sont spécifiées dans le fichier `requirements.txt`.
+Extracts introductory text from a web page.
 
-## Contribuer
+### `get_random_user_agent()`
 
-Les contributions sont les bienvenues ! Pour contribuer :
+Returns a random user agent string.
 
-1. Forkez ce dépôt.
-2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/nouvelle-fonctionnalité`).
-3. Commitez vos modifications (`git commit -am 'Ajoute une nouvelle fonctionnalité'`).
-4. Poussez la branche (`git push origin feature/nouvelle-fonctionnalité`).
-5. Ouvrez une Pull Request.
+### `get_driver(proxies)`
 
-## Licence
+Configures and returns a Selenium WebDriver with a proxy and a random user agent.
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+### `scrape_page(url, proxies)`
+
+Scrapes the given URL using Selenium and returns the page source.
+
+### `process_company(company, prompts, proxies)`
+
+Processes a single company's information and generates text using GPT-4o.
+
+### `adjust_workers()`
+
+Dynamically adjusts the number of workers based on CPU and memory usage.
+
+### `main(mode_test=False)`
+
+Main function to load data, process companies, and save the results.
+
+## Contributing
+
+Contributions are welcome! Please create a pull request or open an issue to discuss your ideas.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
